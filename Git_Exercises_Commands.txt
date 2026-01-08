@@ -6,6 +6,7 @@ mkdir git-practice
 cd git-practice
 git init
 
+
 touch README.md
 git status
 git add README.md
