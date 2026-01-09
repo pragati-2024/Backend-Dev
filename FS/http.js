@@ -13,7 +13,15 @@
 
 const http = require("http")
 const server = http.createServer((req,res)=>{
-    res.end("hello from http")
+    console.log(req.url)
+    console.log(req.method)
+
+    res.writeHead(200,{"content-type": "text/html"})
+    res.write("<h1> welcome </h1>")
+    res.end()
+
+    // console.log(req)
+    // res.end("hello from http")
 })
 
 // port no and callback function
