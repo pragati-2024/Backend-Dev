@@ -38,19 +38,15 @@ const fs = require("fs");
 
 
 // append function-aynschronous
-console.log("first");
-fs.appendFile('./output.txt',"this is new onw",(err)=>{
-    if(err) throw err
-    console.log("text add successfully")
+// console.log("first");
+// fs.appendFile('./FS/output.txt',"this is new onw",(err)=>{
+//     if(err) throw err
+//     console.log("text add successfully")
 
-})
+// })
 
 // delete function
-fs.unlinkSync('./output.txt', (err) => {
-        if (err) throw err;
-        console.log("file deleted successfully");
-    });
-
+fs.unlinkSync('./output.txt')
 
 console.log("end");
  
