@@ -1,0 +1,22 @@
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Node.js streams are very powerful for handling large files.
+This is random generated text for testing read streams.
+
+User: Pragati
+Email: pragati@example.com
+City: Delhi
+Country: India
+
+1234567890
+abcdefghijklmnopqrstuvwxyz
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+
+आज Node.js में Streams सीख रहे हैं।
+Streams data को chunks में पढ़ते हैं।
+इससे memory load कम होता है।
+
+Random Line 1: Apple Banana Mango
+Random Line 2: Car Bike Train
+Random Line 3: Red Blue Green
+
+End of file.
