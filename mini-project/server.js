@@ -1,4 +1,5 @@
 const http = require('http')
+const {Transform} = require('stream')
 const user=[
     {
         name :"Pragati Bansal",
@@ -40,4 +41,14 @@ const server = http.createServer((req,res)=>{
 server.listen(3000,()=>{
     console.log("server is running")
 })
-// step 2
+// step 3
+const upper = new Transform({
+    transform(chunk,encoding,cb){
+        const modifiedData = chunk.toString().toUpperCase();
+        cb(null,modifiedData)
+    }
+})
+
+const readStream = fs.createReadStream('../Streams/info.txt')
+const writeStream = fs.createWriteStream('./infooutput.txt')
+readStream.pipe(upper).pipe(writeStream)
