@@ -1,0 +1,37 @@
+let userData = [{
+    id:1,
+    name:"deepak",
+    age:26,
+    course:"BTECH",
+    gender:"male"
+},
+{
+    id:2,
+    name:"RESHU",
+    age:20,
+    course:"BTECH",
+    gender:"female"
+},
+{
+    id:3,
+    name:"RITIKA",
+    age:20,
+    course:"BTECH",
+    gender:"female"
+},
+{
+    id:4,
+    name:"VAMIKA",
+    age:20,
+    course:"BTECH",
+    gender:"female"
+},
+{
+    id:5,
+    name:"PRAGATI",
+    age:19,
+    course:"BTECH",
+    gender:"female"
+}]
+module.exports=userData;
+// yahan pae sirf array bhejrhe

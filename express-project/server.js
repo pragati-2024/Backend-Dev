@@ -1,4 +1,5 @@
 const express = require("express");
+// const userData=require("./data")
 // runtime define kraya h common js se isiliye require use kra
 const app = express();
 app.get("/", (req, res) => {
