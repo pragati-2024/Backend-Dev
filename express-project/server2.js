@@ -27,9 +27,7 @@ app.get("/",(req,res)=>{
 app.get("/userDetail",(req,res)=>{
     res.json(userData)
 })
-app.listen(3000,()=>{
-    console.log("server is running")
-})
+
 // create a route which display a user
 // age>25
 // let a = [1,2,3,4,5,6]
@@ -52,12 +50,41 @@ app.get("/userName",(req,res)=>{
     res.json(userName)
     
 })
+// uper should be static lower should be dynamic
 
-// jo id url mae hogi uska data show hojayega website mae
-app.get("/user/:id",(req,res)=>{
+
+app.get("/user/page",(req,res)=>{
+    let name = req.query.name;
+    let size = req.query.size;
+    const pagesize = req.query.pagesize;
+    const limit = req.query.limit
+    res.json({name,size,pagesize,limit})
+    // res.send("user page")
+})
+// app.get("/:id",(req,res)=>
+// {
+//     const id = parseInt(req.params.id);
+//     let userid = userData.find(user=>user.id===id)
+//     res.json(userId)
+// })
+app.get("/user/profile/:id",(req,res)=>{
+    // res.send("profile")
     const id = parseInt(req.params.id)//string mae ayegi interger m convert krne k lie parseint
     let user = userData.find((user)=>user.id === id)
     res.json(user);
+    
+})
+// jo id url mae hogi uska data show hojayega website mae
+// app.get("/user/:id",(req,res)=>{
+//     const id = parseInt(req.params.id)//string mae ayegi interger m convert krne k lie parseint
+//     let user = userData.find((user)=>user.id === id)
+//     res.json(user);
+// })
+
+
+
+app.listen(3000,()=>{
+    console.log("server is running")
 })
 
 

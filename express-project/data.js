@@ -3,35 +3,40 @@ let userData = [{
     name:"deepak",
     age:26,
     course:"BTECH",
-    gender:"male"
+    gender:"male",
+    profile:"rich"
 },
 {
     id:2,
     name:"RESHU",
     age:20,
     course:"BTECH",
-    gender:"female"
+    gender:"female",
+    profile:"rich"
 },
 {
     id:3,
     name:"RITIKA",
     age:20,
     course:"BTECH",
-    gender:"female"
+    gender:"female",
+    profile:"rich"
 },
 {
     id:4,
     name:"VAMIKA",
     age:20,
     course:"BTECH",
-    gender:"female"
+    gender:"female",
+    profile:"rich"
 },
 {
     id:5,
     name:"PRAGATI",
     age:19,
     course:"BTECH",
-    gender:"female"
+    gender:"female",
+    profile:"poor"
 }]
 module.exports=userData;
 // yahan pae sirf array bhejrhe
