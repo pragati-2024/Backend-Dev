@@ -1,38 +1,52 @@
 const express = require('express')
-const app=express()
+const app = express()
 const userData = require('./data')
-app.get("/",(req,res)=>{
+
+app.get("/", (req, res) => {
     res.send("server is running")
 })
-app.get("/user/:id/:profile/:lang/:tab",(req,res)=>{
-    // res.send("profile")
-    const id = parseInt(req.params.id);
-    let userid = userData.find((user)=>user.id === id);
-    res.json(userid);
-    const tab=req.query.tab
-    const lang=req.query.lang
-    if(tab == "info"){
-        return res.send("info tab")
+
+app.get("/user/:id/:lang/:tab", (req, res) => {
+
+    const id = parseInt(req.params.id)
+    const lang = req.params.lang
+    const tab = req.params.tab
+
+    const user = userData.find(user => user.id === id)
+
+    if (!user) {
+        return res.status(404).send("User not found")
     }
-    else if(tab == "post"){
-        return res.send("post")
+
+    let message = ""
+
+    // tab logic
+    if (tab === "info") {
+        message = "info tab"
+    } 
+    else if (tab === "post") {
+        message = "post tab"
+    } 
+    else if (tab === "settings") {
+        message = "settings tab"
     }
-    else if(tab=="settings"){
-        return res.send("settings")
+
+    // language logic
+    if (lang === "english") {
+        message += " (english)"
+    } 
+    else if (lang === "hindi") {
+        message += " (hindi)"
     }
-    else if(lang == "english"){
-        return res.send("english")
-    }
-    else if(lang == "hindi"){
-        res.send("hindi")
-    }
-    else{
-        res.send("nothing to write")
-    }
-    
-    res.json({info,posts,settings,tab,lang})
+
+    res.json({
+        user,
+        tab,
+        lang,
+        message
+    })
 })
 
-app.listen(4000,()=>{
-    console.log("server is runnning continue")
+app.listen(4000, () => {
+    console.log("server is running continue")
 })
