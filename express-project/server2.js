@@ -54,11 +54,19 @@ app.get("/userName",(req,res)=>{
 
 
 app.get("/user/page",(req,res)=>{
-    let name = req.query.name;
-    let size = req.query.size;
+    // let name = req.query.name;
+    // let size = req.query.size;
+    const page = req.query.page;
     const pagesize = req.query.pagesize;
     const limit = req.query.limit
-    res.json({name,size,pagesize,limit})
+
+    // new
+    const startindex = (page-1)*limit;
+    const endindex=page*limit;
+
+// url=>  http://localhost:3000/user/page?page=1&limit=2
+    const pagedata=userData.slice(startindex,endindex);
+    res.json({pagedata})
     // res.send("user page")
 })
 // app.get("/:id",(req,res)=>
