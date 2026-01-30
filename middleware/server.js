@@ -23,6 +23,7 @@ let mid2 = (req,res,next)=>{
 app.use(mid1)
 app.use(mid2)
 
+
 app.get("/",(req,res)=>{
     console.log(req.url)
     res.send("server is running")
