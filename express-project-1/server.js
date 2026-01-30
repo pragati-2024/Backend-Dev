@@ -1,11 +1,25 @@
 // express import
 import express from "express";
+import fs from 'fs'
+import logfun from "./middleware.js";
 
 // app create
 const app = express();
 
 // middleware: JSON body read karne ke liye
 app.use(express.json());
+// hr route kae liye chljaye isiliye yeh middle ware use kra logfun funtion bnakr
+// req ->middleware-> res
+// let logfun = (req,res,next)=>{
+//   let logText = `timestamp : ${new Date().toString()} url ${req.url}
+//   method ${req.method} \n`
+//   console.log(logText)
+//   fs.appendFileSync('./log.txt',logText);
+
+//   // loading state mae na fase isiliye
+//   next()
+// }
+app.use(logfun)
 
 // in-memory users data
 let users = [
@@ -117,6 +131,7 @@ app.put("/user/:id", (req, res) => {
 
 // delete user
 app.delete("/user/:id", (req, res) => {
+  
   // params se id
   const id = parseInt(req.params.id);
 

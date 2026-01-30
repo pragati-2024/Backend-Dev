@@ -1,0 +1,4 @@
+timestamp : Fri Jan 30 2026 09:26:27 GMT+0530 (India Standard Time) url /user/1
+  method GET 
+timestamp : Fri Jan 30 2026 09:28:51 GMT+0530 (India Standard Time) url /user
+  method GET 
