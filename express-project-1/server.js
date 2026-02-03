@@ -1,16 +1,11 @@
-// =====================
-// express import
-// =====================
 import express from "express";
 import fs from "fs";
-
 // middleware import (folder ke andar se)
 import logfun from "./middleware/middleware.js";
-
 // data import (data ko users naam se use kar rahe hain)
 import { data as users } from "./data.js";
 
-// dotenv import + CONFIG CALL (IMPORTANT FIX)
+// dotenv import + CONFIG CALL
 import { config } from "dotenv";
 config();  //ab .env kaam karega
 
