@@ -62,7 +62,7 @@ app.post("/user", (req, res) => {
 
   // new user object
   const newUser = {
-    id: users.length + 1, // learning purpose ke liye OK
+    id: users.length + 1, // learning purpose ke liye 
     username,
     password,
   };
