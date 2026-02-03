@@ -9,7 +9,6 @@ import { data as users } from "./data.js";
 import { config } from "dotenv";
 config();  //ab .env kaam karega
 
-// app create
 const app = express();
 
 // port (env se ya default)
