@@ -2,6 +2,7 @@
 const express = require('express')
 const app = express();
 // middleware bnadia
+// custom middleware->logging middlware
 app.use((req, res, next) => {
     // jaise abhi ka time store krliya
   const start = Date.now();

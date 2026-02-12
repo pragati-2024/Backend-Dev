@@ -40,3 +40,7 @@ app.get("/",(req,res)=>{
 app.listen(3000,()=>{
     console.log("server")
 })
+// view engine dynamic data shi krta hae
+// runtime m ejs html mae convert hota hae taaki browser read krske
+// slice se data chahuye
+// splice se selectd data htjaygea
