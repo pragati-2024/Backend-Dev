@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Edit Employee</title>
+</head>
+<body>
+	<h2>Edit Employee</h2>
+	<% const currentGender = (employee.gender || '').toLowerCase(); %>
+	<form action="/api/employee/<%= employee.id %>?_method=PUT" method="POST">
+		<label>Name: <input type="text" name="name" value="<%= employee.name %>" required></label><br>
+		<label>Email: <input type="email" name="email" value="<%= employee.email %>" required></label><br>
+		<label>Gender:
+			<label><input type="radio" name="gender" value="male" <%= currentGender === 'male' ? 'checked' : '' %> required> Male</label>
+			<label><input type="radio" name="gender" value="female" <%= currentGender === 'female' ? 'checked' : '' %> required> Female</label>
+		</label><br>
+		<label>Department: <input type="text" name="department" value="<%= employee.department %>" required></label><br>
+		<label>Salary: <input type="number" name="basicSalary" value="<%= employee.basicSalary %>" required></label><br>
+		<button type="submit">Update Employee</button>
+	</form>
+	<a href="/">Back to Home</a>
+</body>
+</html>
