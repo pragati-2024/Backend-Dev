@@ -1,0 +1,9 @@
+many to many
+student_id                                      courseid
+
+name                                             title   
+rollno                                          duration
+courses              🕊🕊🕊🐠🐬🐬🐬🦈🦈                price
+branch                                             instructor id 
+marks                                               tags
+                                                listofstudent:[]
