@@ -1,0 +1,15 @@
+1. Stock Trading Platform → Consistency + Partition Tolerance (CP)>>>>>>>>>>>>>>>>>>>>>>>>>>>>.
+
+Accuracy is critical (no wrong transactions), so consistency is prioritized over availability.
+
+2. Content Delivery Network (CDN) → Availability + Partition Tolerance (AP)>>>>>>>>>>>>>>>>>>>>>>
+
+System must always respond quickly, even if some data is slightly outdated.
+
+3. Airline Booking System → Consistency + Partition Tolerance (CP)>>>>>>>>>>>>>>>>>>>>>>>>
+
+Seat booking must be accurate to avoid double booking, so consistency is important.
+
+4. Video Streaming Service → Availability + Partition Tolerance (AP)>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Continuous streaming is more important than perfect consistency (slight delay acceptable).

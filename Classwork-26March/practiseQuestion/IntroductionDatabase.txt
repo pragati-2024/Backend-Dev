@@ -1,0 +1,41 @@
+1->>>>>>>>>>>>>>>>>>>>Difference between SQL and NoSQL databases>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+SQL databases are relational databases that store data in the form of tables consisting of rows and columns.
+They follow a fixed schema, meaning the structure of the data must be defined before inserting data.
+SQL databases are best suited for structured data and ensure strong consistency.
+Examples include MySQL and PostgreSQL.
+
+NoSQL databases are non-relational databases that store data in formats such as documents, key-value pairs, graphs, or columns. 
+They have a flexible schema, allowing data to be stored without a predefined structure. 
+NoSQL databases are suitable for handling large volumes of unstructured or semi-structured data and provide high scalability.
+ An example is MongoDB.
+
+2->>>>>>>>>>>>>>>>>>>>>>>>>>> CAP Theorem>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+The CAP theorem states that a distributed system can guarantee only two out of the following three properties: Consistency, Availability, and Partition Tolerance.
+
+Consistency means all nodes return the same data at the same time. Availability means every request receives a response, even if some nodes are down. Partition tolerance means the system continues to function despite network failures.
+
+It is not possible to achieve all three properties simultaneously because network partitions are unavoidable in distributed systems. Therefore, a system must choose between consistency and availability when a partition occurs.
+
+3->>>>>>>>>>>>>>>>>>>>>>> Scenarios where MongoDB is preferred
+
+MongoDB is preferred in applications where the data structure is not fixed and may change frequently. It is useful in applications such as user profiles where different users may have different fields.
+
+It is also preferred for rapid application development because it does not require a predefined schema, making it easier and faster to develop applications.
+
+Another scenario is when handling large amounts of unstructured or semi-structured data such as logs, social media data, or IoT data, where MongoDB’s document-based storage is highly efficient.
+
+4. Why MongoDB uses BSON instead of JSON >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+MongoDB uses BSON (Binary JSON) instead of JSON because BSON is more efficient for storage and processing. BSON is a binary format, which makes it faster for computers to parse and process compared to text-based JSON.
+
+It also supports additional data types such as Date, ObjectId, and binary data, which are not supported in standard JSON. BSON improves performance and allows better indexing and querying.
+
+5. MongoDB query>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+To find all students with GPA above 3.5 and enrolled in "CS101", the query is:
+
+db.students.find({ gpa: { $gt: 3.5 }, course: "CS101" })
+
+This query selects all documents where the GPA is greater than 3.5 and the course is CS101
