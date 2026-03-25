@@ -1,0 +1,48 @@
+# Mongoose Assessment Questions (Questions + Solutions)
+
+## 1. What are the advantages of using Mongoose over the native MongoDB driver?**
+
+Mongoose provides a higher-level abstraction over the native MongoDB driver, making development easier and more structured. It allows developers to define schemas, which enforce a clear structure for documents. Mongoose also supports built-in validation, middleware (hooks), and easier relationship handling using populate(). Additionally, it simplifies CRUD operations and improves code readability.
+
+---
+
+## 2. Explain the difference between findOneAndUpdate() and updateOne().**
+
+The `updateOne()` method updates a single document but does not return the updated document by default; instead, it returns a result object containing information about the operation.
+
+The `findOneAndUpdate()` method finds a document, updates it, and can return the updated document if the option `{ new: true }` is used. It is useful when you need the modified document immediately after the update.
+
+---
+
+## 3. What is the purpose of middleware in Mongoose?**
+
+Middleware in Mongoose (also called hooks) is used to execute functions before or after certain operations like save, update, or delete. It helps in tasks such as validation, logging, hashing passwords, or modifying data automatically before saving it to the database.
+
+---
+
+## 4. How do you implement pagination in Mongoose?**
+
+Pagination in Mongoose is implemented using the `skip()` and `limit()` methods. The `skip()` method skips a specified number of documents, and `limit()` restricts the number of documents returned.
+
+Example:
+
+```js
+const page = 1;
+const limit = 10;
+
+const data = await Student.find()
+  .skip((page - 1) * limit)
+  .limit(limit);
+```
+
+This fetches documents page by page instead of loading all data at once.
+
+---
+
+##5. When should you use embedding vs referencing in MongoDB schema design?**
+
+Embedding should be used when related data is small, frequently accessed together, and does not change often. It improves read performance by storing data in a single document.
+
+Referencing should be used when dealing with large datasets, complex relationships, or when data is reused across multiple documents. It avoids duplication and maintains consistency.
+
+

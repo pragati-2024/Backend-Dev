@@ -1,0 +1,29 @@
+Create Database & Collection
+use studentDB
+db.createCollection("students")
+
+2. Add New Student (Create)
+db.students.insertOne({
+  name: "Pragati",
+  email: "pragati@gmail.com",
+  gpa: 3.8,
+  course: "CSE"
+})
+
+3. View All Students (Read)
+db.students.find()
+
+
+4. Find Student by Email
+db.students.find({ email: "pragati@gmail.com" })
+
+
+5. Update Student GPA (Update)
+db.students.updateOne(
+  { email: "pragati@gmail.com" },
+  { $set: { gpa: 4.0 } }
+)
+
+
+6. Delete Student (Delete)
+db.students.deleteOne({ email: "pragati@gmail.com" })

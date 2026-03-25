@@ -1,0 +1,87 @@
+# MongoDB Aggregation Exercises (Questions + Solutions)
+*Exercise 4: Aggregation**
+
+### **1. Calculate average GPA by department**
+
+**Query:**
+
+```js
+db.students.aggregate([
+  {
+    $group: {
+      _id: "$department",
+      avgGPA: { $avg: "$gpa" }
+    }
+  }
+])
+```
+
+**Explanation:**
+This query groups students by department and calculates the average GPA for each department using the `$avg` operator.
+
+---
+
+### **2. Find most popular courses**
+
+**Query:**
+
+```js
+db.students.aggregate([
+  { $unwind: "$courses" },
+  {
+    $group: {
+      _id: "$courses",
+      totalStudents: { $sum: 1 }
+    }
+  },
+  { $sort: { totalStudents: -1 } }
+])
+```
+
+**Explanation:**
+The `$unwind` stage separates each course from the array. Then `$group` counts how many students are enrolled in each course. Finally, `$sort` arranges courses by popularity in descending order.
+
+---
+
+### **3. Generate student performance report**
+
+**Query:**
+
+```js
+db.grades.aggregate([
+  {
+    $lookup: {
+      from: "students",
+      localField: "studentId",
+      foreignField: "_id",
+      as: "student"
+    }
+  },
+  { $unwind: "$student" },
+
+  {
+    $lookup: {
+      from: "courses",
+      localField: "courseId",
+      foreignField: "_id",
+      as: "course"
+    }
+  },
+  { $unwind: "$course" },
+
+  {
+    $project: {
+      _id: 0,
+      studentName: "$student.name",
+      courseName: "$course.courseName",
+      grade: 1,
+      semester: 1
+    }
+  }
+])
+```
+
+**Explanation:**
+This pipeline joins the `grades` collection with `students` and `courses` using `$lookup`. The `$unwind` stage flattens the joined data, and `$project` formats the final output as a student performance report.
+
+---
