@@ -1,8 +1,8 @@
 //model -> controller -> routes -->server
 //controller always contain logic
 import express from 'express'
-import { getAllUsers } from '../controllers/userController.js';
+import { signup } from '../controllers/authController.js';
 const router = express.Router();
-router.get("/user",getAllUsers)
+router.post("/signup",signup)
 
 export default router;

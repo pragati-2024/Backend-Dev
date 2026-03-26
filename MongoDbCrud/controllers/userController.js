@@ -13,3 +13,5 @@ export const  getAllUsers = async(req,res) =>{
         console.log("cant get user",error)
     }
 }
+// http://localhost:5000/api/user
+// yeh run krna hae
