@@ -1,0 +1,11 @@
+http-> 
+/user + additoonal information dena pdega
+jwt->authentication->hash form mae dedega
+
+cookies->generate hogi frontend mae ayega next route mae cookies attach hojaygea (small part of data stores in browser),
+(cookies next route mae bhi attch hokr chlajayega - email)
+client side me cookies store hojaygea
+
+cookies kae ander information hae
+session
+-> server mae store hoga - >user information  behind the scene cookies work krh hae (automatioc use hota hae session)

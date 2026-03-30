@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
     name:{
         type:'String',
         require:true,
-        maxlength:[25,'Name must contain 25 character only']
+        maxlength : [25,'Name must contain 25 character only']
     },
     email:{
         type:'String',
@@ -16,6 +16,7 @@ const userSchema = new mongoose.Schema({
     password:{
         type:'String',
         require:true,
+        
         minlength:[8,"password must contain 8 char only"]
     },
     role:{
@@ -24,6 +25,12 @@ const userSchema = new mongoose.Schema({
         default:'user'
     }
 })
+userSchema.pre("save",async function(next))
+    if(!this.isModified("password")){
+        return ;
+    }
+
+
 //now making model
 const user = mongoose.model("user",userSchema)
 export default user;
