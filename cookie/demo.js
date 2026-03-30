@@ -13,21 +13,27 @@ app.use(cookieParser('my-super-secret-key'));
 
 // simple authentication
 const authMiddleware  = (req,res,next)=>{
-     if(!req.cookies.token){
-        return res.send("invalid user");
+    try {
+        if(!req.cookies.token){
+            return res.send("invalid user");
+        }
+        
+        const token = req.cookies.token;   
+        const decode = jwt.verify(token,"qwerty");   
+        req.user = decode;
+        next()
+    } catch (err) {
+        return res.send("invalid token");
     }
-    
-    const token = req.cookies.token;   
-    const decode = jwt.verify(token,"qwerty");   
-    req.user = decode;
-    next()
+
     // if(!req.cookies.name){
     //     res.send("invalid user");
     //     return;
     // }
     // next()
 }
-app.get("/dashboard",(req,res)=>{
+
+app.get("/dashboard",authMiddleware,(req,res)=>{
     const user = req.user
     console.log(user)
     res.send(`welcome to your dashboard , ${user.name}!`)
@@ -72,9 +78,13 @@ app.get('/profile',authMiddleware,(req,res)=>{
     // const token = req.cookies.token;   
     // const decode = jwt.verify(token,"qwerty");   
 
-    console.log(decode)
+    console.log(req.cookies)   //  DEBUG (important)
 
-    res.send(`Welcome to your profile, ${decode.name}`);
+    const user = req.user;   //  middleware se data le rahe hain
+
+    console.log(user)
+
+    res.send(`Welcome to your profile, ${user.name}`);
 })
 
 app.get('/logout',authMiddleware,(req,res)=>{
