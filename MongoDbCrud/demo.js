@@ -16,6 +16,10 @@ const authMiddleware  = (req,res,next)=>{
      if(!req.cookies.token){
         return res.send("invalid user");
     }
+    
+    const token = req.cookies.token;   
+    const decode = jwt.verify(token,"qwerty");   
+    req.user = decode;
     next()
     // if(!req.cookies.name){
     //     res.send("invalid user");
@@ -23,21 +27,27 @@ const authMiddleware  = (req,res,next)=>{
     // }
     // next()
 }
+app.get("/dashboard",(req,res)=>{
+    const user = req.user
+    console.log(user)
+    res.send(`welcome to your dashboard , ${user.name}!`)
+})
 
 app.get('/get-cookie',authMiddleware,(req,res)=>{
     // agr cookies nai hae toh invalid user
     // if(!req.cookies.name){
     //     return res.send("invalid user");
     // }
-    const name = req.cookies.name;
-    res.send(`cookie value : ${name}`);
+    // const name = req.cookies.name;
+    const user = req.user
+    res.send(`cookie value : ${user.name}`);
 })
 
 app.get('/set-cookie',(req,res)=>{
     // agr cookies nai hae toh invalid user
     // if(!req.cookies.name){
     //     return res.send("invalid user");
-    // }
+    // }                       
     let user = {
         name:'rohan',
         email:'rohanb@gmail.com'
@@ -59,8 +69,8 @@ app.get('/profile',authMiddleware,(req,res)=>{
     //     return res.send("invalid user");
     // }
 
-    const token = req.cookies.token;   // 
-    const decode = jwt.verify(token,"qwerty");  // 
+    // const token = req.cookies.token;   
+    // const decode = jwt.verify(token,"qwerty");   
 
     console.log(decode)
 
