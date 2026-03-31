@@ -35,6 +35,14 @@ app.get("/profile",(req,res)=>{
         res.status(401).send("Unauthorized")
     }
 })
+app.get("/logout",(req,res)=>{
+    req.session.destroy((err)=>{
+        if(err){
+            return res.status(500).send("could not log out")
+        }
+        res.send("User logged out")
+    })
+})
 app.listen(PORT,()=>{
     console.log(`server is running on the port ${PORT}`)
 })
