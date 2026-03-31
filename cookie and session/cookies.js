@@ -79,6 +79,7 @@ app.get('/profile',authMiddleware,(req,res)=>{
     // const decode = jwt.verify(token,"qwerty");   
 
     console.log(req.cookies)   //  DEBUG (important)
+    // learning
 
     const user = req.user;   //  middleware se data le rahe hain
 
