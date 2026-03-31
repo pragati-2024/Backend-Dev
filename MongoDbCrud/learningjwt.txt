@@ -9,3 +9,12 @@ client side me cookies store hojaygea
 cookies kae ander information hae
 session
 -> server mae store hoga - >user information  behind the scene cookies work krh hae (automatioc use hota hae session)
+
+diffrence between session and cookies
+->
+ cookies ka sara data browser ame rhta hae
+ session mae sara data server mae rhta hae 
+
+
+
+ 
