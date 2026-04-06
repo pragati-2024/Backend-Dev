@@ -25,10 +25,13 @@ const userSchema = new mongoose.Schema({
         default:'user'
     }
 })
-userSchema.pre("save",async function(next))
-    if(!this.isModified("password")){
-        return ;
+userSchema.pre("save", async function () {
+    if (!this.isModified("password")) {
+        return;
     }
+
+    // hash password here
+});
 
 
 //now making model
