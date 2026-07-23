@@ -1,0 +1,16 @@
+.Exercise 4: JSON to BSON>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Given JSON:
+{
+  "orderId": "12345",
+  "orderDate": "2024-01-15",
+  "totalAmount": "99.99",
+  "items": ["item1", "item2"]
+}
+ANSWER
+Converted to BSON (proper types):
+{
+  orderId: 12345,                 // String → Number
+  orderDate: new Date("2024-01-15"), // String → Date
+  totalAmount: 99.99,             // String → Number (Double)
+  items: ["item1", "item2"]       // Array remains same
+}

@@ -1,0 +1,19 @@
+1. Online Banking System → SQL>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+SQL database is preferred because banking systems require high consistency, security, and transactions (ACID properties). Data like account balance must always be accurate.
+
+2. Social Media Platform → NoSQL>>>>>>>>>>>>>>>>>>>>>>>.
+
+NoSQL is suitable because social media handles large, unstructured data like posts, comments, images, and user activity. It also requires high scalability.
+
+3. Real-time Chat Application → NoSQL>>>>>>>>>>>>>>>>>>>>>>
+
+NoSQL is preferred due to high speed and real-time data handling. Flexible schema helps store messages, media, and timestamps efficiently.
+
+4. Hospital Patient Records → SQL>>>>>>>>>>>>>>>>>.
+
+SQL is used because patient data must be accurate, structured, and consistent. Relationships between tables (patients, doctors, reports) are important.
+
+5. IoT Sensor Data Collection → NoSQL>>>>>>>>>>>>>>>>>>>>>>
+
+NoSQL is best as IoT generates massive, continuous, and semi-structured data, requiring high scalability and fast writes.
