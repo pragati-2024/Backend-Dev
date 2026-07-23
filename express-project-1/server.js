@@ -1,26 +1,27 @@
-// express import
 import express from "express";
+import fs from "fs";
+// middleware import (folder ke andar se)
+import logfun from "./middleware/middleware.js";
+// data import (data ko users naam se use kar rahe hain)
+import { data as users } from "./data.js";
 
-// app create
+// dotenv import + CONFIG CALL
+import { config } from "dotenv";
+config();  //ab .env kaam karega
+
 const app = express();
 
-// middleware: JSON body read karne ke liye
+// port (env se ya default)
+const port = process.env.PORT || 5000;
+
+// middleware
+
+// JSON body read karne ke liye
 app.use(express.json());
 
-// in-memory users data
-let users = [
-  {
-    id: 1,
-    username: "quert",
-    password: "qwer123",
-  },
-  {
-    id: 2,
-    username: "ramesh",
-    password: "123456",
-  },
-];
-
+// har route ke liye logging middleware
+// flow: req → middleware → route → res
+app.use(logfun);
 // home route
 app.get("/", (req, res) => {
   res.status(200).json({
@@ -28,7 +29,6 @@ app.get("/", (req, res) => {
   });
 });
 
-// get all users
 app.get("/user", (req, res) => {
   res.status(200).json(users);
 });
@@ -38,14 +38,14 @@ app.post("/user", (req, res) => {
   // body se username aur password destructure
   const { username, password } = req.body;
 
-  // validation
+  // validation: empty fields
   if (!username || !password) {
     return res.status(400).json({
       message: "username and password required",
     });
   }
 
-  // password length check
+  // password length validation
   if (password.length < 6) {
     return res.status(400).json({
       message: "password must be at least 6 characters",
@@ -62,12 +62,12 @@ app.post("/user", (req, res) => {
 
   // new user object
   const newUser = {
-    id: users.length + 1,
+    id: users.length + 1, // learning purpose ke liye 
     username,
     password,
   };
 
-  // push into array
+  // user add
   users.push(newUser);
 
   // response
@@ -77,12 +77,12 @@ app.post("/user", (req, res) => {
   });
 });
 
-// update username only (PUT with destructuring)
+// update username only
 app.put("/user/:id", (req, res) => {
   // params se id
   const id = parseInt(req.params.id);
 
-  // body se sirf username destructure
+  // body se username
   const { username } = req.body;
 
   // user index find
@@ -102,7 +102,7 @@ app.put("/user/:id", (req, res) => {
     });
   }
 
-  // update username
+  // update username (spread operator use karke)
   users[index] = {
     ...users[index],
     username,
@@ -130,7 +130,7 @@ app.delete("/user/:id", (req, res) => {
     });
   }
 
-  // remove user
+  // user remove
   const deletedUser = users.splice(index, 1);
 
   // response
@@ -140,7 +140,6 @@ app.delete("/user/:id", (req, res) => {
   });
 });
 
-// server start
-app.listen(3000, () => {
-  console.log("server is running on port 3000");
+app.listen(port, () => {
+  console.log(`server is running on port ${port}`);
 });
