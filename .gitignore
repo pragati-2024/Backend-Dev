@@ -1,13 +1,3 @@
-# dependencies
-**/node_modules/
-
-# env files
-**/.env
-
-# logs
-**/logs/
-
-# OS / editor
-.DS_Store
-Thumbs.db
-.vscode/
+node_modules/
+.env
+*.log
